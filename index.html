@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chuyện của hai đứa trước khi bắt đầu hành trình mới</title>
+  <style>
+    body {
+      background-color: #f9f6f2;
+      color: #4a403a;
+      font-family: 'Playfair Display', serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      text-align: center;
+      flex-direction: column;
+      transition: opacity 0.5s ease-in-out;
+    }
+
+    h1 {
+      font-size: 1.8rem;
+      margin-bottom: 1.2rem;
+    }
+
+    p {
+      font-size: 1.1rem;
+      max-width: 80%;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    button {
+      margin-top: 2rem;
+      padding: 0.6rem 1.5rem;
+      background-color: #e6d7c3;
+      border: none;
+      border-radius: 30px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      color: #4a403a;
+    }
+
+    button:hover {
+      background-color: #d8c2a6;
+      transform: scale(1.05);
+    }
+
+    .heart {
+      position: absolute;
+      color: #e6b8b8;
+      animation: floatUp 2s ease-in-out forwards;
+      font-size: 1.2rem;
+    }
+
+    @keyframes floatUp {
+      0% { opacity: 1; transform: translateY(0); }
+      100% { opacity: 0; transform: translateY(-100px); }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Chuyện của hai đứa trước khi bắt đầu hành trình mới</h1>
+  <p id="content">
+    Em muốn mình cùng nhau nói thật với nhau về những điều này trước khi cưới nhé...<br><br>
+    Không phải để thử nhau, mà để hiểu rõ hơn – xem cách mình nghĩ, mong muốn, và thương nhau có cùng hướng không.
+  </p>
+  <button id="nextBtn">Bắt đầu nhé 💛</button>
+
+  <script>
+    const questions = [
+      "1. Về tiền bạc – Mình sẽ quản lý thế nào cho cả hai thoải mái nhất? <br><br> Ai giữ tiền, có cần tài khoản chung không, chia chi tiêu ra sao, và mình có cần giữ một phần riêng cho mỗi người không?",
+      "2. Sau cưới, mình sẽ sống ở đâu và mong cuộc sống hàng ngày như thế nào? <br><br> Ở riêng hay ở cùng ba mẹ? Mỗi người có cần không gian riêng không? Mình muốn cuộc sống sau cưới nhẹ nhàng, vui vẻ, và 'vẫn yêu như hồi đầu' bằng cách nào?",
+      "3. Về con cái – Mình có cùng suy nghĩ không? <br><br> Khi nào sinh con, muốn mấy đứa, ai chăm chính, và quan điểm nuôi dạy con có giống nhau không?",
+      "4. Khi có mâu thuẫn, mình nên đối diện thế nào? <br><br> Em/anh cần được nói hết hay cần thời gian bình tĩnh trước? Ai sẽ là người làm hòa? Có điều gì khiến em/anh cảm thấy tổn thương khi cãi nhau không?",
+      "5. Gia đình hai bên sẽ tham gia đến đâu trong cuộc sống của mình? <br><br> Mình đặt ranh giới thế nào để vừa hiếu thảo, vừa giữ được cuộc sống riêng? Nếu có chuyện giữa hai bên, mình sẽ cùng nhau xử lý ra sao?",
+      "6. Về công việc – Mình có sẵn sàng đồng hành với nhau không? <br><br> Nếu một người bận, đi công tác, hoặc thu nhập khác nhau thì có ảnh hưởng đến cảm xúc của mình không? Mình có sẵn lòng ủng hộ nhau theo đuổi đam mê, dù có vất vả không?",
+      "7. Cách thể hiện tình yêu – mỗi người cần điều gì để cảm thấy được yêu? <br><br> Em/anh cần lời nói, hành động, thời gian hay sự quan tâm nhỏ hàng ngày? Có điều gì khiến em/anh thấy được yêu hơn mà người kia nên biết?",
+      "8. Việc nhà và trách nhiệm gia đình – mình chia thế nào cho công bằng và vui vẻ? <br><br> Ai nấu ăn, ai dọn dẹp, có thể thuê người giúp khi bận không? Những việc nhỏ nào khiến em/anh cảm thấy được trân trọng?",
+      "9. Nếu một trong hai gặp khó khăn, người kia sẽ ở bên như thế nào? <br><br> Khi mệt mỏi, thất nghiệp, hoặc khủng hoảng – em/anh mong người kia làm gì? Điều gì khiến em/anh cảm thấy an toàn nhất trong mối quan hệ này?",
+      "10. Điều gì khiến em/anh cảm thấy được tôn trọng và trân trọng nhất? <br><br> Cách nói chuyện, cách lắng nghe, hay ranh giới nào mình không nên vượt qua? Mình có thể làm gì mỗi ngày để giữ được sự tôn trọng và bình yên cho nhau?",
+      "💌 Em không muốn mình cưới chỉ vì đến 'đúng thời điểm', mà vì thật sự hiểu nhau và muốn cùng nhau xây hạnh phúc.<br><br> Nên… mình nói chuyện nhé, từng điều một, không vội vàng.<br><br><strong>– Công chúa của anh 🤍</strong>"
+    ];
+
+    let index = 0;
+    const content = document.getElementById("content");
+    const btn = document.getElementById("nextBtn");
+
+    btn.addEventListener("click", () => {
+      if (index < questions.length) {
+        content.style.opacity = 0;
+        setTimeout(() => {
+          content.innerHTML = questions[index];
+          content.style.opacity = 1;
+          createHeart();
+          index++;
+          if (index === questions.length) {
+            btn.style.display = "none";
+          }
+        }, 400);
+      }
+    });
+
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.classList.add("heart");
+      heart.innerHTML = "💗";
+      heart.style.left = Math.random() * window.innerWidth + "px";
+      heart.style.top = "70%";
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 2000);
+    }
+  </script>
+</body>
+</html>
